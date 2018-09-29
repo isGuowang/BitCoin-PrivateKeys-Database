@@ -10,3 +10,6 @@ Implementation of Bitcoin Private keys Generator web with Django
 由于API查询的速度非常缓慢，目前默认！是将含有2000多万个比特币余额的地址放在了mysql的prikeys数据库中，如果使用数据库匹配生成的比特币地址，请在models迁移创建表后，导入比特币地址，然后将address字段添加索引
 
 注意：此Demo仅供娱乐，找到含有比特币余额的地址的概率几乎为0！
+
+截图：
+![image](https://github.com/isGuowang/BitCoin-PrivateKeys-Database/tree/master/screenshot/01.png)
