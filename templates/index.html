@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PrivateKeys-Database</title>
+    <link rel="stylesheet" href="/static/css/index.css" >
+</head>
+<body>
+<h2>比特币私钥数据库</h2>
+<span style="font-size: 14px; width:700px;float: left">一共有{{ page }}页</span>
+<span style="float: left;width: 120px;font-size: 14px">{{ msg.0 }}</span>
+<div class="btn" style="float: left;width: 300px;">
+    <form action="" method="post">
+        <input type="hidden" name="page" value={{ pre_page }} />
+        <input type="submit" style="float: left;width: 80px;margin-right: 5px" name="pre_page" value="上一页"/>
+        {% csrf_token %}
+    </form>
+    <form action="" method="post">
+        <input type="hidden" name="page" value={{ next_page }} />
+        <input type="submit" style="float: left;width: 80px;margin-right: 5px" name="next_page" value="下一页"/>
+        {% csrf_token %}
+    </form>
+    <form action="" method="post">
+        <input type="hidden" name="page" value={{ randomPage }} />
+        <input type="submit" style="float: left;width: 80px;margin-right: 5px" name="random_page" value="random"/>
+        {% csrf_token %}
+    </form>
+</div>
+<p style="font-size: 14px; width:700px;float: left">现在是第{{ i }}页</p>
+<div class="main">
+    <form action="" method="post" style="margin-bottom: 20px">
+        <input type="text" style="width: 1050px;height: 20px;"  name="page" placeholder="请输入页数"/>
+        <input type="submit"  value="跳转"/>
+        {% csrf_token %}
+    </form>
+
+    <table style="font-size: 14px" >
+        <tr>
+        <td width="540px">比特币私钥（Private Keys)</td>
+        <td width="380px">未压缩地址（Bitcoin Address)</td>
+       <!-- <td width="325px">压缩地址（Compressed Address）</td> -->
+        <td width="150px">余额（Balance）</td>
+        </tr>
+
+        {% for values in list %}
+        <tr>
+        <td>{{ values.0}}</td>
+        <td>{{ values.1 }}</td>
+       <!-- <td>{{ values.2 }}</td> -->
+        <td>{{ values.2 }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+</body>
+</html>
